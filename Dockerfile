@@ -7,6 +7,7 @@ COPY . /usr/share/nginx/html
 RUN rm /usr/share/nginx/html/index.html
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.backup
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN usermod -aG www-data nginx
 RUN nginx -t
 RUN service php7.3-fpm start
 CMD ["nginx", "-g", "daemon off;"]

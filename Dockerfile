@@ -1,9 +1,11 @@
-FROM debian:latest
+FROM nginx:latest
 RUN apt update && apt upgrade -y
-RUN apt install apache2 php libapache2-mod-php -y
-RUN chmod -R 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html 
-RUN echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
-COPY . /var/www/html
-RUN rm /var/www/html/index.html
-RUN service apache2 start
+RUN apt install php7.3 php7.3-fpm -y
+RUN chown -R www-data:www-data /usr/share/nginx/html
+RUN echo "<?php phpinfo(); ?>" > /usr/share/nginx/html/phpinfo.php
+RUN service php7.3-fpm start
+COPY . /usr/share/nginx/html
+RUN rm /usr/share/nginx/html/index.html
+RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.backup
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN service nginx reload && service nginx start

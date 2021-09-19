@@ -5,4 +5,5 @@ RUN chmod -R 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html 
 RUN echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 COPY . /var/www/html
-RUN service apache2 restart
+RUN rm /var/www/html/index.html
+RUN service apache2 start

@@ -9,5 +9,5 @@ RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.backup
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN usermod -aG www-data nginx
 RUN nginx -t
-RUN service php7.3-fpm start
+CMD /etc/init.d/php7.3-fpm restart
 CMD ["nginx", "-g", "daemon off;"]

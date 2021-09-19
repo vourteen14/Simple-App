@@ -8,4 +8,5 @@ COPY . /usr/share/nginx/html
 RUN rm /usr/share/nginx/html/index.html
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.backup
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-RUN service nginx reload && service nginx start
+RUN nginx -t
+RUN service nginx reload 

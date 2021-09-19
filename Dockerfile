@@ -8,5 +8,5 @@ RUN rm /usr/share/nginx/html/index.html
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.backup
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN nginx -t
-CMD service php7.3-fpm start
-CMD ["nginx"]
+RUN service php7.3-fpm start
+RUN service nginx reload

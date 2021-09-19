@@ -10,3 +10,4 @@ RUN service php7.3-fpm start
 RUN echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 COPY nginx-site.conf /etc/nginx/sites-enabled/default
 COPY --chown=www-data:www-data . /var/www/html
+RUN service nginx restart

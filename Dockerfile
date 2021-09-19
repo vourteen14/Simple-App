@@ -1,4 +1,3 @@
 FROM nginx:latest
-RUN apt update && apt upgrade -y
-RUN apt install php
+RUN apt update && apt upgrade && apt install php -y
 COPY index.php /usr/share/nginx/html

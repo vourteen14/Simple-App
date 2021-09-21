@@ -10,7 +10,7 @@ node {
         sh 'docker login -u vourteen14 -p $PASSWORD'
     }
     stage("Push Image"){
-        sh 'docker push vourteen14/simple-app:simple-app'
+        sh 'docker push vourteen14/simple-app:simple-app:v1'
     }
 	stage("Deploy ke Kubernetes"){
 		sh 'microk8s.kubectl create -f simple-app.yaml'

@@ -12,4 +12,7 @@ node {
     stage("Push Image"){
         sh 'docker push vourteen14/simple-app:simple-app'
     }
+	stage("Deploy ke Kubernetes"){
+		sh 'kubectl create -f simple-app.yaml'
+	}
 }

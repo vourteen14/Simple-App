@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app-production
+  namespace: default
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: simple-app-production
+  template:
+    metadata:
+      labels:
+        app: simple-app-production
+    spec:
+      containers:
+      - image: vourteen14/simple-app:simple-app
+        imagePullPolicy: Always
+        name: hello-dep
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+             path: /
+             port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1

@@ -13,6 +13,6 @@ node {
         sh 'docker push vourteen14/simple-app:simple-app'
     }
 	stage("Deploy ke Kubernetes"){
-		sh 'kubectl create -f simple-app.yaml'
+		sh 'microk8s.kubectl create -f simple-app.yaml'
 	}
 }

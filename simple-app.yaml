@@ -19,7 +19,7 @@ spec:
         app: simple-app-production
     spec:
       containers:
-      - image: vourteen14/simple-app:simple-app
+      - image: vourteen14/simple-app:v1
         imagePullPolicy: Always
         name: hello-dep
         ports:

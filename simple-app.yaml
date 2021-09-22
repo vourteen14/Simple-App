@@ -19,7 +19,7 @@ spec:
         app: simple-app-production
     spec:
       containers:
-      - image: vourteen14/simple-app:v2
+      - image: vourteen14/simple-app:v4
         imagePullPolicy: Always
         name: simple-app-production
         ports:

@@ -21,7 +21,7 @@ spec:
       containers:
       - image: vourteen14/simple-app:v2
         imagePullPolicy: Always
-        name: hello-dep
+        name: simple-app-production
         ports:
         - containerPort: 80
         readinessProbe:

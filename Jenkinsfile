@@ -13,6 +13,6 @@ node {
         sh 'docker push vourteen14/simple-app:v5'
     }
 	stage("Deploy ke Kubernetes"){
-		sh 'microk8s.kubectl set image deployment/simple-app-production simple-app-production=vourteen14/simple-app:v3'
+		sh 'microk8s.kubectl set image deployment/simple-app-production simple-app-production=vourteen14/simple-app:v4'
 	}
 }

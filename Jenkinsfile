@@ -7,10 +7,6 @@ node {
 		versi = "1.0.0"
 	}
 	
-	stage("Ambil Image") {
-	    sh 'git pull https://github.com/joe_user/simple-maven-project-with-tests.git'
-	}
-	
 	stage("Buat Image"){
 		sh 'docker build -t simple-app .'
 		sh 'docker tag simple-app vourteen14/simple-app:${versi}'

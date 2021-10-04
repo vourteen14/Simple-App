@@ -22,7 +22,6 @@ node {
 	
 	stage("Deploy Image"){
 		sh 'export IMAGE="vourteen14/simple-app:${versi}"'
-		sh "echo $IMAGE"
 		sh "microk8s.kubectl apply -f simple-app.yaml"
 	}
 }

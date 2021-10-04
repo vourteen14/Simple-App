@@ -24,7 +24,7 @@ node {
 	stage("Deploy Image"){
 		script {
 			sh """
-				sed -i "s|{{IMAGE}}|${image}|" simple-app.yaml
+				sed -i "s/{{IMAGE}}/${image}/" simple-app.yaml
 				microk8s.kubectl apply -f simple-app.yaml
 			"""
 		}

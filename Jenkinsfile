@@ -2,6 +2,7 @@
 
 node {
 	def versi = sh(script: 'git describe --tags --abbrev=0', returnStdout: true)
+	def image = "vourteen14/simple-app:${versi}"
 	
 	if(versi){
 		versi = "1.0.0"
@@ -21,7 +22,11 @@ node {
 	}
 	
 	stage("Deploy Image"){
-		sh "export IMAGE=vourteen14/simple-app:${versi}"
-		sh "microk8s.kubectl apply -f simple-app.yaml"
+		script {
+			sh """
+				sed -i "s|{{IMAGE}}|${image}|" simple-app.yaml
+				microk8s.kubectl apply -f simple-app.yaml
+			"""
+		}
 	}
 }

@@ -19,7 +19,7 @@ spec:
         app: simple-app-production
     spec:
       containers:
-      - image: $IMAGE
+      - image: {{IMAGE}}
         imagePullPolicy: Always
         name: simple-app-production
         ports:
